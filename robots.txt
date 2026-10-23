@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mendozacarloseduardoipn-dot.github.io/sitemap.xml
