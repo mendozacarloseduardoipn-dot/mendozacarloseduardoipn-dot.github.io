@@ -1623,13 +1623,8 @@ p { margin: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
-  }
-  .franja__pista, .ambiente span { animation: none; }
+  html { scroll-behavior: auto; }
+  .ambiente span { animation: none; }
   .portada__rejilla > div:first-child, .portada .visor { transform: none !important; translate: none !important; scale: none !important; rotate: none !important; opacity: 1 !important; filter: none !important; }
 }
 
@@ -1973,8 +1968,4 @@ p { margin: 0; }
   .visor-video__cerrar { top: 8px; right: 8px; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .intro { display: none !important; }
-  .js main > section.seccion-espera::after, .js main > section.seccion-viva::after { display: none; }
-  .carrusel.listo .telefono { transition: none; }
-}
+

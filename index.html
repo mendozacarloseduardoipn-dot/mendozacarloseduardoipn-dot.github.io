@@ -32,10 +32,9 @@
   <script>
     document.documentElement.classList.add('js');
     (function () {
-      var reducido = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       var visto = false;
       try { visto = sessionStorage.getItem('intro-vista') === '1'; } catch (e) {}
-      if (!reducido && !visto) document.documentElement.classList.add('con-intro');
+      if (!visto) document.documentElement.classList.add('con-intro');
     })();
   </script>
 

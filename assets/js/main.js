@@ -7,7 +7,11 @@
   'use strict';
 
   const config = window.PORTAFOLIO || { cv: '', videos: {} };
-  const reducido = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* Las animaciones son parte del portafolio, así que se muestran siempre.
+     Si el sistema pide menos movimiento, solo se quitan los efectos de
+     inclinación y parallax (los más bruscos). */
+  const reducido = false;
+  const menosMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const $ = (sel, raiz = document) => raiz.querySelector(sel);
   const $$ = (sel, raiz = document) => Array.from(raiz.querySelectorAll(sel));
 
@@ -76,7 +80,7 @@
   const portada = $('.portada');
   const gigante = $('.pie__gigante');
   const efectosScroll = () => {
-    if (reducido) return;
+    if (menosMovimiento) return;
     if (portada) {
       const s = Math.min(1, Math.max(0, window.scrollY / (portada.offsetHeight * 0.85)));
       portada.style.setProperty('--s', s.toFixed(3));
@@ -268,7 +272,7 @@
   }
 
   /* ---------- Inclinación de teléfonos al pasar el mouse ---------- */
-  if (!reducido && window.matchMedia('(hover: hover)').matches) {
+  if (!menosMovimiento && window.matchMedia('(hover: hover)').matches) {
     $$('.telefono').filter((t) => !t.closest('[data-carrusel]')).forEach((tel) => {
       tel.addEventListener('pointermove', (e) => {
         const r = tel.getBoundingClientRect();

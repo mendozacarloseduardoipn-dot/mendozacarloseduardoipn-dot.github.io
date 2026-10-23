@@ -11,7 +11,7 @@
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const raiz = document.documentElement;
-  const reducido = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reducido = false; // ver nota en main.js
 
   /* ---------- 1. Intro de entrada ---------- */
   if (raiz.classList.contains('con-intro')) {
