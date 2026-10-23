@@ -76,9 +76,9 @@
       pista.style.setProperty('--duracion', `${Math.max(18, base / 45)}s`);
       m.classList.add('activa');
     };
-    const imgs = $$('img', pista);
-    Promise.all(imgs.map((i) => i.complete ? null : new Promise((r) => { i.addEventListener('load', r, { once: true }); i.addEventListener('error', r, { once: true }); })))
-      .then(llenar);
+    // Las imágenes tienen ancho y alto declarados, así que se puede medir de inmediato
+    llenar();
+    window.addEventListener('load', llenar, { once: true });
     let t; window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(llenar, 200); });
   });
 
