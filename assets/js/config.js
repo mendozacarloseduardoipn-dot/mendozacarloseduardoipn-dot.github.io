@@ -11,9 +11,9 @@ window.PORTAFOLIO = {
   /* CV en PDF.
      1. Copia tu PDF a la carpeta assets/docs/
      2. Escribe aquí su ruta. Ejemplo:
-        cv: 'assets/docs/CV-Carlos-Eduardo-Mendoza.pdf?v=2',
+        cv: 'assets/docs/CV-Carlos-Eduardo-Mendoza.pdf?v=3',
      Si lo dejas vacío (''), el botón no aparece. */
-  cv: 'assets/docs/CV-Carlos-Eduardo-Mendoza.pdf?v=2',
+  cv: 'assets/docs/CV-Carlos-Eduardo-Mendoza.pdf?v=3',
 
   /* Videos de los teléfonos.
      Cada teléfono del HTML tiene un data-video="nombre".
