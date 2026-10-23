@@ -137,16 +137,29 @@
     });
   }
 
-  /* ---------- Videos en los teléfonos ---------- */
-  const iconoSonido = (activo) => activo
-    ? '<svg viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="1.7"><path d="M3 7.5h3l4-3.5v12l-4-3.5H3z"/><path d="M13.5 7a4 4 0 0 1 0 6M15.8 4.8a7 7 0 0 1 0 10.4"/></svg>'
-    : '<svg viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="1.7"><path d="M3 7.5h3l4-3.5v12l-4-3.5H3z"/><path d="m13.5 7.5 5 5m0-5-5 5"/></svg>';
+  /* ---------- Videos en los teléfonos ----------
+     Cada video se reproduce solo (sin sonido) cuando aparece en pantalla.
+     Controles: tocar el video = pausa/reproducir, botón de sonido,
+     botón para verlo en grande con sonido y barra de progreso. */
+  const ICONOS = {
+    sonidoOn: '<svg viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="1.7"><path d="M3 7.5h3l4-3.5v12l-4-3.5H3z"/><path d="M13.5 7a4 4 0 0 1 0 6M15.8 4.8a7 7 0 0 1 0 10.4"/></svg>',
+    sonidoOff: '<svg viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="1.7"><path d="M3 7.5h3l4-3.5v12l-4-3.5H3z"/><path d="m13.5 7.5 5 5m0-5-5 5"/></svg>',
+    play: '<svg viewBox="0 0 24 24" fill="#fff"><path d="M8 5.5v13l11-6.5z"/></svg>',
+    pausa: '<svg viewBox="0 0 24 24" fill="#fff"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>',
+    ampliar: '<svg viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="1.8"><path d="M12 3h5v5M8 17H3v-5M17 3l-6 6M3 17l6-6"/></svg>'
+  };
 
   const videosActivos = [];
+  const silenciarTodos = () => {
+    videosActivos.forEach((v) => { v.muted = true; });
+    $$('.telefono__sonido').forEach((b) => { b.innerHTML = ICONOS.sonidoOff; b.setAttribute('aria-label', 'Activar sonido'); });
+  };
+
   $$('[data-video]').forEach((tel) => {
     const datos = (config.videos || {})[tel.dataset.video] || {};
     const pantalla = $('.telefono__pantalla', tel);
     const portada = $('img', pantalla);
+    const enCarrusel = !!tel.closest('[data-carrusel]');
 
     if (datos.enlace) {
       const a = document.createElement('a');
@@ -163,50 +176,100 @@
     const video = document.createElement('video');
     video.src = datos.src;
     video.muted = true;
-    video.loop = true;
+    video.defaultMuted = true;
+    video.loop = !enCarrusel; // en el carrusel, al terminar pasa al siguiente
     video.playsInline = true;
+    video.autoplay = !enCarrusel;
     video.setAttribute('playsinline', '');
-    video.preload = 'none';
+    video.setAttribute('muted', '');
+    video.preload = 'metadata';
     if (portada) video.poster = portada.currentSrc || portada.src;
     video.setAttribute('aria-label', portada ? portada.alt : 'Video');
-    video.addEventListener('error', () => video.remove()); // si falla, queda la imagen
+    video.addEventListener('error', () => { video.remove(); tel.classList.remove('con-video'); });
     pantalla.appendChild(video);
+    tel.classList.add('con-video');
 
+    // Tocar = pausa / reproducir
+    const toque = document.createElement('button');
+    toque.type = 'button';
+    toque.className = 'telefono__toque';
+    toque.setAttribute('aria-label', 'Pausar o reproducir video');
+    const estado = document.createElement('span');
+    estado.className = 'telefono__estado';
+    estado.setAttribute('aria-hidden', 'true');
+    toque.appendChild(estado);
+    toque.addEventListener('click', (e) => {
+      if (tel.closest('[data-carrusel]') && !tel.classList.contains('activo')) return; // el carrusel lo maneja
+      e.stopPropagation();
+      if (video.paused) { video.dataset.pausaManual = ''; video.play().catch(() => {}); estado.innerHTML = ICONOS.play; }
+      else { video.dataset.pausaManual = '1'; video.pause(); estado.innerHTML = ICONOS.pausa; }
+      estado.classList.remove('flash'); void estado.offsetWidth; estado.classList.add('flash');
+    });
+    tel.appendChild(toque);
+
+    // Progreso
+    const progreso = document.createElement('span');
+    progreso.className = 'telefono__progreso';
+    progreso.innerHTML = '<span></span>';
+    tel.appendChild(progreso);
+    const barra = progreso.firstChild;
+    video.addEventListener('timeupdate', () => {
+      if (video.duration) barra.style.transform = `scaleX(${video.currentTime / video.duration})`;
+    });
+
+    // Sonido
     const boton = document.createElement('button');
     boton.type = 'button';
     boton.className = 'telefono__sonido';
     boton.setAttribute('aria-label', 'Activar sonido');
-    boton.innerHTML = iconoSonido(false);
-    boton.addEventListener('click', () => {
+    boton.innerHTML = ICONOS.sonidoOff;
+    boton.addEventListener('click', (e) => {
+      e.stopPropagation();
       const activar = video.muted;
-      videosActivos.forEach((v) => { v.muted = true; }); // solo un video con sonido
-      $$('.telefono__sonido').forEach((b) => { b.innerHTML = iconoSonido(false); b.setAttribute('aria-label', 'Activar sonido'); });
+      silenciarTodos();
       video.muted = !activar;
-      boton.innerHTML = iconoSonido(activar);
+      boton.innerHTML = activar ? ICONOS.sonidoOn : ICONOS.sonidoOff;
       boton.setAttribute('aria-label', activar ? 'Silenciar' : 'Activar sonido');
-      if (activar) video.play().catch(() => {});
+      if (activar) { video.dataset.pausaManual = ''; video.play().catch(() => {}); }
     });
     tel.appendChild(boton);
+
+    // Ver en grande
+    const ampliar = document.createElement('button');
+    ampliar.type = 'button';
+    ampliar.className = 'telefono__ampliar';
+    ampliar.setAttribute('aria-label', 'Ver video en grande');
+    ampliar.innerHTML = ICONOS.ampliar;
+    ampliar.addEventListener('click', (e) => {
+      e.stopPropagation();
+      window.dispatchEvent(new CustomEvent('ver-video', { detail: { video, titulo: video.getAttribute('aria-label') } }));
+    });
+    tel.appendChild(ampliar);
+
+    video.__carrusel = enCarrusel;
     videosActivos.push(video);
   });
+  window.__videosPortafolio = { lista: videosActivos, silenciarTodos };
 
-  if (videosActivos.length && 'IntersectionObserver' in window) {
+  // Reproducción automática al aparecer (los del carrusel los controla dinamica.js)
+  const libres = videosActivos.filter((v) => !v.__carrusel);
+  if (libres.length && 'IntersectionObserver' in window) {
     const obsVideo = new IntersectionObserver((entradas) => {
       entradas.forEach((en) => {
         const v = en.target;
-        if (en.isIntersecting && !reducido) {
+        if (en.isIntersecting && !reducido && v.dataset.pausaManual !== '1') {
           v.play().catch(() => {});
-        } else {
+        } else if (!en.isIntersecting) {
           v.pause();
         }
       });
-    }, { threshold: 0.45 });
-    videosActivos.forEach((v) => obsVideo.observe(v));
+    }, { threshold: 0.35 });
+    libres.forEach((v) => obsVideo.observe(v));
   }
 
   /* ---------- Inclinación de teléfonos al pasar el mouse ---------- */
   if (!reducido && window.matchMedia('(hover: hover)').matches) {
-    $$('.telefono').forEach((tel) => {
+    $$('.telefono').filter((t) => !t.closest('[data-carrusel]')).forEach((tel) => {
       tel.addEventListener('pointermove', (e) => {
         const r = tel.getBoundingClientRect();
         const x = (e.clientX - r.left) / r.width - 0.5;

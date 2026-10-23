@@ -29,7 +29,15 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
   <link rel="stylesheet" href="assets/css/main.css">
 
-  <script>document.documentElement.classList.add('js');</script>
+  <script>
+    document.documentElement.classList.add('js');
+    (function () {
+      var reducido = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var visto = false;
+      try { visto = sessionStorage.getItem('intro-vista') === '1'; } catch (e) {}
+      if (!reducido && !visto) document.documentElement.classList.add('con-intro');
+    })();
+  </script>
 
   <script type="application/ld+json">
   {
@@ -49,6 +57,14 @@
 </head>
 <body>
   <div class="ambiente" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="intro" aria-hidden="true">
+    <div class="intro__panel">
+      <div class="intro__claqueta"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <p class="intro__nombre">Carlos Eduardo Mendoza</p>
+      <p class="intro__dato"><span>Editor de video</span><span>Diseño</span><span>Redes</span></p>
+      <div class="intro__barra"><span></span></div>
+    </div>
+  </div>
   <a class="saltar" href="#contenido">Saltar al contenido</a>
 
   <!-- ==================== ENCABEZADO ==================== -->
@@ -198,34 +214,71 @@
       <div class="envoltura">
         <div class="clientes__cabeza" data-entra="arriba">
           <h2 class="titulo titulo--verde" id="titulo-clientes">Clientes</h2>
-          <p class="entrada">He trabajado con equipos, marcas y creadores. Esto es lo que hice para cada uno.</p>
+          <p class="entrada">He trabajado con equipos, marcas y creadores. Pasa el cursor sobre una tarjeta para detener el carrusel.</p>
         </div>
+        <div class="marquesina" data-marquesina>
         <ul class="clientes__lista">
-          <li class="cliente" data-entra="abajo" style="--retraso:0s">
+          <li class="cliente">
             <div class="cliente__logo cliente__logo--verde"><img src="assets/img/clientes/cheyennes.webp" width="225" height="155" alt="Logo de Cheyennes Culhuacán" loading="lazy"></div>
             <h3>Cheyennes ESIME Culhuacán</h3>
             <ul><li>Edición de videos</li><li>Administración de redes</li><li>Toma de fotografías</li></ul>
           </li>
-          <li class="cliente" data-entra="abajo" style="--retraso:.08s">
+          <li class="cliente">
             <div class="cliente__logo cliente__logo--verde"><img src="assets/img/clientes/somos-mx.webp" width="224" height="137" alt="Logo de Somos MX" loading="lazy"></div>
             <h3>Somos MX</h3>
             <ul><li>Creación de sub logos</li><li>Propuesta visual</li></ul>
           </li>
-          <li class="cliente" data-entra="abajo" style="--retraso:.16s">
+          <li class="cliente">
             <div class="cliente__logo"><img src="assets/img/clientes/vic-diego.webp" width="203" height="200" alt="Víctor H. Diego, creador de Rompecintas" loading="lazy"></div>
             <h3>Rompecintas, Vic Diego</h3>
             <ul><li>Edición de videos para TikTok, Reels y YouTube Shorts</li></ul>
           </li>
-          <li class="cliente" data-entra="abajo" style="--retraso:.24s">
+          <li class="cliente">
             <div class="cliente__logo cliente__logo--blanco"><img src="assets/img/clientes/pronostika.webp" width="202" height="200" alt="Logo de Equipo PronostiKA" loading="lazy"></div>
             <h3>PronostiKA</h3>
             <ul><li>Creación de sub logos</li><li>Propuesta visual</li></ul>
           </li>
-          <li class="cliente" data-entra="abajo" style="--retraso:.32s">
+          <li class="cliente">
             <div class="cliente__logo cliente__logo--blanco"><img src="assets/img/clientes/jp-records.webp" width="198" height="198" alt="Logo de JP Records" loading="lazy"></div>
             <h3>JP Records</h3>
             <ul><li>Creación de logo</li><li>Redes en TikTok e Instagram</li><li>Propuesta visual</li></ul>
           </li>
+        </ul>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==================== GALERÍA (carrusel doble) ==================== -->
+    <section class="galeria" aria-label="Galería de trabajos" data-clip="Galería" data-tipo="diseno">
+      <div class="envoltura galeria__cabeza" data-entra="arriba">
+        <h2 class="subtitulo">Un vistazo a mi trabajo</h2>
+        <p class="entrada">Mockups, portadas de video y estadísticas de los proyectos.</p>
+      </div>
+      <div class="galeria__fila marquesina" data-marquesina>
+        <ul class="galeria__pista">
+            <li><img src="assets/img/proyectos/disca-bolsa.webp" alt="" loading="lazy"></li>
+            <li><img src="assets/img/proyectos/pronostika-celular.webp" alt="" loading="lazy"></li>
+            <li><img src="assets/img/proyectos/cheyennes-3.webp" alt="" loading="lazy"></li>
+            <li><img src="assets/img/proyectos/disca-laptop.webp" alt="" loading="lazy"></li>
+            <li><img src="assets/img/proyectos/pronostika-papel.webp" alt="" loading="lazy"></li>
+            <li><img src="assets/img/proyectos/disca-gorra.webp" alt="" loading="lazy"></li>
+            <li><img src="assets/img/proyectos/cheyennes-4.webp" alt="" loading="lazy"></li>
+            <li><img src="assets/img/proyectos/pronostika-bolsa.webp" alt="" loading="lazy"></li>
+            <li><img src="assets/img/proyectos/disca-celular.webp" alt="" loading="lazy"></li>
+            <li><img src="assets/img/proyectos/jp-logo.webp" alt="" loading="lazy"></li>
+        </ul>
+      </div>
+      <div class="galeria__fila galeria__fila--inversa marquesina" data-marquesina>
+        <ul class="galeria__pista">
+            <li><img src="assets/img/proyectos/vic-1.webp" alt="" loading="lazy"></li>
+            <li><img src="assets/img/proyectos/cheyennes-1.webp" alt="" loading="lazy"></li>
+            <li><img src="assets/img/proyectos/jp-1.webp" alt="" loading="lazy"></li>
+            <li><img src="assets/img/proyectos/vic-2.webp" alt="" loading="lazy"></li>
+            <li><img src="assets/img/proyectos/cheyennes-2.webp" alt="" loading="lazy"></li>
+            <li><img src="assets/img/proyectos/vic-3.webp" alt="" loading="lazy"></li>
+            <li><img src="assets/img/proyectos/vic-4.webp" alt="" loading="lazy"></li>
+            <li><img src="assets/img/proyectos/jp-estadisticas.webp" alt="" loading="lazy"></li>
         </ul>
       </div>
     </section>
@@ -324,11 +377,19 @@
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg>
           </a>
         </div>
-        <div class="fila-telefonos">
-          <figure class="telefono" data-video="vic-1" data-entra="abajo"><div class="telefono__pantalla"><img src="assets/img/proyectos/vic-1.webp" width="540" height="960" alt="Video de Vic Diego en su estudio con luz cálida" loading="lazy"></div></figure>
-          <figure class="telefono" data-video="vic-2" data-entra="abajo" style="--retraso:.1s"><div class="telefono__pantalla"><img src="assets/img/proyectos/vic-2.webp" width="540" height="960" alt="Video de Vic Diego recorriendo una estación del metro" loading="lazy"></div></figure>
-          <figure class="telefono" data-video="vic-3" data-entra="abajo" style="--retraso:.2s"><div class="telefono__pantalla"><img src="assets/img/proyectos/vic-3.webp" width="540" height="960" alt="Video de Vic Diego sobre un sitio clausurado" loading="lazy"></div></figure>
-          <figure class="telefono" data-video="vic-4" data-entra="abajo" style="--retraso:.3s"><div class="telefono__pantalla"><img src="assets/img/proyectos/vic-4.webp" width="540" height="960" alt="Video: Los Engrillados en Puebla, con Víctor Diego" loading="lazy"></div></figure>
+        <div class="carrusel" data-carrusel data-entra="abajo" aria-roledescription="carrusel" aria-label="Videos de Rompecintas">
+          <div class="carrusel__pista">
+            <figure class="telefono" data-video="vic-1"><div class="telefono__pantalla"><img src="assets/img/proyectos/vic-1.webp" width="540" height="960" alt="Video de Vic Diego en su estudio con luz cálida" loading="lazy"></div></figure>
+            <figure class="telefono" data-video="vic-2"><div class="telefono__pantalla"><img src="assets/img/proyectos/vic-2.webp" width="540" height="960" alt="Video de Vic Diego recorriendo una estación del metro" loading="lazy"></div></figure>
+            <figure class="telefono" data-video="vic-3"><div class="telefono__pantalla"><img src="assets/img/proyectos/vic-3.webp" width="540" height="960" alt="Video de Vic Diego sobre un sitio clausurado" loading="lazy"></div></figure>
+            <figure class="telefono" data-video="vic-4"><div class="telefono__pantalla"><img src="assets/img/proyectos/vic-4.webp" width="540" height="960" alt="Video: Los Engrillados en Puebla, con Víctor Diego" loading="lazy"></div></figure>
+          </div>
+          <div class="carrusel__controles">
+            <button class="carrusel__flecha" type="button" data-anterior aria-label="Video anterior"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12.5 4 6.5 10l6 6"/></svg></button>
+            <div class="carrusel__puntos" role="tablist"></div>
+            <button class="carrusel__flecha" type="button" data-siguiente aria-label="Video siguiente"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m7.5 4 6 6-6 6"/></svg></button>
+          </div>
+          <p class="carrusel__nota">Cada video pasa al siguiente cuando termina. Desliza o usa las flechas.</p>
         </div>
       </div>
     </section>
@@ -609,5 +670,6 @@
 
   <script src="assets/js/config.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/dinamica.js"></script>
 </body>
 </html>
