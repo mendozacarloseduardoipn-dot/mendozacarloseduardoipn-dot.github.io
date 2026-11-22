@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#f8e1e6">
+<meta property="og:title" content="Tengo algo para ti 💗">
+<meta property="og:description" content="Abre esto cuando estés lista.">
+<title>Para ti 💗</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23c1121f' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500&family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg1:#fdf3f5; --bg2:#f8e1e6; --bg3:#f3d2da;
+  --rose:#f2c4cd; --crimson:#c1121f; --crimson-d:#8f0e1a;
+  --ink:#3a2529; --muted:#9b7a80; --line:rgba(193,18,31,.16);
+  --card:rgba(255,255,255,.58); --card-b:rgba(255,255,255,.75);
+  --shadow:0 18px 40px -18px rgba(143,14,26,.28);
+  --serif:"Playfair Display", Georgia, serif;
+  --script:"Cormorant Garamond", Georgia, serif;
+  --sans:"DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --heart:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23c1121f' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+  --heart-pink:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23e98a9b' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+html,body{overflow-x:hidden}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg1);min-height:100svh;-webkit-font-smoothing:antialiased}
+body.locked{overflow:hidden;height:100svh}
+img,video{display:block;max-width:100%}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;touch-action:manipulation}
+.bg{position:fixed;inset:0;z-index:-2;background:
+  radial-gradient(120% 60% at 0% 0%, #fff6f8 0%, transparent 60%),
+  radial-gradient(90% 50% at 100% 30%, #fbe3e8 0%, transparent 70%),
+  linear-gradient(180deg,var(--bg1) 0%,var(--bg2) 55%,var(--bg3) 100%)}
+.hearts-bg{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.hearts-bg i{position:absolute;bottom:-40px;width:var(--s);height:var(--s);background:var(--heart-pink) center/contain no-repeat;opacity:0;animation:rise var(--d) linear var(--delay) infinite}
+@keyframes rise{0%{transform:translate(0,0) rotate(-10deg);opacity:0}10%{opacity:var(--o)}50%{transform:translate(var(--x),-55vh) rotate(12deg)}90%{opacity:var(--o)}100%{transform:translate(0,-110vh) rotate(-8deg);opacity:0}}
+
+.wrap{max-width:480px;margin:0 auto;position:relative}
+.eyebrow{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.h2{font-family:var(--serif);font-weight:500;font-size:30px;line-height:1.15;margin-top:10px}
+.h2 em{font-style:italic;color:var(--crimson)}
+.sub{color:var(--muted);font-size:14px;margin-top:10px;line-height:1.5}
+.section{padding:76px 22px 0;text-align:center;overflow-x:clip}
+.card{background:var(--card);border:1px solid var(--card-b);border-radius:26px;box-shadow:var(--shadow);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.icon-heart{display:inline-block;width:.9em;height:.9em;background:var(--heart) center/contain no-repeat;vertical-align:-.08em}
+
+/* ---------- INTRO ---------- */
+#intro{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:calc(30px + env(safe-area-inset-top)) 26px 30px;text-align:center;
+  background:radial-gradient(100% 70% at 50% 40%,#fff5f7 0%,#f8dfe5 70%,#f2cfd8 100%);transition:opacity 1s ease .5s, visibility 0s linear 1.6s}
+#intro.done{opacity:0;visibility:hidden}
+.intro-inner{max-width:360px;width:100%}
+.intro-card{padding:26px 22px 22px;margin-top:18px}
+.intro-name{font-family:var(--serif);font-weight:500;font-size:46px;line-height:1.05;margin:6px 0 8px}
+.intro-from{font-size:14px;color:var(--muted)}
+.intro-quote{font-family:var(--script);font-style:italic;font-size:20px;line-height:1.4;margin-top:16px;color:#5a3a40}
+#bigHeart{display:block;margin:34px auto 6px;width:150px;height:150px;position:relative;transition:transform .25s cubic-bezier(.3,1.6,.5,1)}
+#bigHeart svg{width:100%;height:100%;filter:drop-shadow(0 18px 26px rgba(193,18,31,.35));animation:beat 1.3s ease-in-out infinite}
+#bigHeart.pop svg{animation:none}
+#bigHeart .glow{position:absolute;inset:-18px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.75),transparent 65%);z-index:-1}
+@keyframes beat{0%,100%{transform:scale(1)}14%{transform:scale(1.1)}28%{transform:scale(1)}42%{transform:scale(1.08)}70%{transform:scale(1)}}
+.taps{display:flex;gap:8px;justify-content:center;margin:16px 0 12px}
+.taps i{width:14px;height:14px;background:var(--heart-pink) center/contain no-repeat;opacity:.35;transition:transform .3s,opacity .3s}
+.taps i.on{background-image:var(--heart);opacity:1;transform:scale(1.25)}
+.intro-hint{font-size:13px;color:var(--muted);min-height:1.4em;transition:opacity .25s}
+#intro.finale #bigHeart{transform:scale(9);opacity:0;transition:transform 1.1s cubic-bezier(.6,0,.4,1),opacity 1s ease .2s}
+#intro.finale .intro-card,#intro.finale .taps,#intro.finale .intro-hint{opacity:0;transition:opacity .4s}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;height:92svh;min-height:560px;border-radius:0 0 34px 34px;overflow:hidden;box-shadow:var(--shadow)}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 2.4s cubic-bezier(.2,.7,.2,1)}
+body.opened .hero img{transform:scale(1)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,6,10,.25) 0%,rgba(20,6,10,0) 30%,rgba(20,6,10,.15) 55%,rgba(40,8,16,.82) 100%)}
+.hero-top{position:absolute;top:calc(16px + env(safe-area-inset-top));left:16px;right:16px;display:flex;justify-content:space-between;z-index:2}
+.pill{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#fff;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.hero-text{position:absolute;left:0;right:0;bottom:0;padding:0 20px 76px;text-align:center;color:#fff;z-index:2}
+.hero-text .eyebrow{color:rgba(255,255,255,.8)}
+.hero-name{font-family:var(--serif);font-weight:500;font-size:52px;line-height:1;margin:8px 0 10px}
+.hero-sub{font-family:var(--serif);font-style:italic;font-size:21px;opacity:.95}
+.hero-date{font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-top:16px;opacity:.85}
+.scroll-hint{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);z-index:2;color:#fff;font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.8;display:flex;flex-direction:column;align-items:center;gap:6px}
+.scroll-hint span{width:1px;height:22px;background:#fff;animation:drip 1.8s ease-in-out infinite;transform-origin:top}
+@keyframes drip{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+
+/* ---------- CONTADOR ---------- */
+.counter{padding:30px 20px 26px;margin-top:26px}
+.badge{display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--crimson);padding:7px 14px;border-radius:999px;margin-bottom:14px;box-shadow:0 8px 18px -8px rgba(193,18,31,.6)}
+.days{font-family:var(--serif);font-size:78px;line-height:1;color:var(--crimson);font-weight:500;font-variant-numeric:tabular-nums}
+.days-label{font-size:12px;letter-spacing:.3em;text-transform:uppercase;margin-top:6px;font-weight:500}
+.since{font-size:13px;color:var(--muted);margin-top:4px}
+.clock{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:22px}
+.clock div{background:rgba(255,255,255,.65);border-radius:16px;padding:12px 4px}
+.clock b{display:block;font-family:var(--serif);font-size:26px;font-weight:500;font-variant-numeric:tabular-nums}
+.clock small{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.minutes{font-size:13px;color:var(--muted);margin-top:18px;line-height:1.5}
+.minutes b{color:var(--crimson);font-weight:700}
+.place{margin-top:14px;font-size:14px;display:flex;gap:6px;justify-content:center;align-items:center}
+
+/* ---------- CANCIÓN ---------- */
+.disc-wrap{position:relative;width:210px;height:210px;margin:30px auto 0}
+.disc{width:100%;height:100%;border-radius:50%;overflow:hidden;box-shadow:0 22px 40px -16px rgba(143,14,26,.45),0 0 0 8px rgba(255,255,255,.7);animation:spin 14s linear infinite;animation-play-state:paused}
+.disc.playing{animation-play-state:running}
+.disc img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.disc::after{content:"";position:absolute;inset:0;border-radius:50%;background:repeating-radial-gradient(circle,rgba(0,0,0,0) 0 6px,rgba(0,0,0,.05) 6px 7px)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.disc-btn{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:62px;height:62px;border-radius:50%;background:var(--crimson);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 7px rgba(255,255,255,.55)}
+.disc-btn svg{width:24px;height:24px}
+.song-title{font-family:var(--serif);font-size:22px;margin-top:22px}
+.song-artist{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.spotify{margin-top:20px;border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+.spotify iframe{display:block;width:100%;height:152px;border:0}
+
+/* ---------- GALERÍA ---------- */
+.carousel{position:relative;margin-top:28px}
+.carousel{--sw:min(76vw,360px)}
+.track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px calc((100% - var(--sw))/2) 22px;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 var(--sw);scroll-snap-align:center;position:relative;aspect-ratio:3/4;border-radius:26px;overflow:hidden;box-shadow:var(--shadow);background:#eed3d9;transform:scale(.92);transition:transform .45s ease}
+.slide.active{transform:scale(1)}
+.slide img,.slide video{width:100%;height:100%;object-fit:cover}
+.slide figcaption{position:absolute;left:0;right:0;bottom:0;padding:44px 16px 16px;text-align:left;color:#fff;font-family:var(--serif);font-style:italic;font-size:18px;background:linear-gradient(transparent,rgba(30,6,12,.7))}
+.slide .live{position:absolute;top:12px;left:12px;font-size:10px;letter-spacing:.18em;font-weight:700;color:#fff;background:rgba(0,0,0,.3);padding:6px 9px;border-radius:999px;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.slide .snd{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,.35);color:#fff;display:flex;align-items:center;justify-content:center;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);z-index:2}
+.slide .snd svg{width:18px;height:18px}
+.count-pill{position:absolute;top:18px;right:calc((100% - var(--sw))/2 + 12px);z-index:3;font-size:11px;font-weight:700;color:#fff;background:rgba(0,0,0,.32);padding:6px 10px;border-radius:999px;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);pointer-events:none}
+.car-nav{display:flex;align-items:center;justify-content:center;gap:16px}
+.car-nav button{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;color:var(--crimson);box-shadow:0 6px 16px -8px rgba(143,14,26,.4)}
+.car-nav svg{width:18px;height:18px}
+.progress{width:120px;height:3px;background:rgba(193,18,31,.15);border-radius:3px;overflow:hidden}
+.progress i{display:block;height:100%;width:0;background:var(--crimson);border-radius:3px;transition:width .3s}
+.tap-tip{font-size:12px;color:var(--muted);margin-top:12px}
+
+/* ---------- CARTA ---------- */
+.envelope-zone{margin-top:34px;display:flex;flex-direction:column;align-items:center}
+.envelope{position:relative;width:270px;height:178px;perspective:900px;cursor:pointer;outline:none}
+.env-back{position:absolute;inset:0;background:#e9a9b5;border-radius:12px;box-shadow:var(--shadow)}
+.env-paper{position:absolute;left:14px;right:14px;top:12px;height:150px;background:#fffafb;border-radius:8px;padding:18px 16px;transition:transform .9s cubic-bezier(.5,0,.3,1) .45s;z-index:1}
+.env-paper p{font-family:var(--script);font-style:italic;font-size:17px;color:#5a3a40;text-align:left}
+.env-paper span{display:block;height:6px;border-radius:3px;background:#f3dfe3;margin-top:10px}
+.env-front{position:absolute;inset:0;background:linear-gradient(160deg,#f3bfc9,#eaa9b6);border-radius:12px;clip-path:polygon(0 0,50% 56%,100% 0,100% 100%,0 100%);z-index:2}
+.env-flap{position:absolute;left:0;right:0;top:0;height:62%;background:linear-gradient(180deg,#f6cbd3,#e7a2b0);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .6s ease,z-index 0s linear .3s;z-index:3;border-radius:12px 12px 0 0}
+.seal{position:absolute;left:50%;top:62%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#e0303d,#9e0d19);z-index:4;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 12px -4px rgba(0,0,0,.35);transition:opacity .3s}
+.seal i{width:20px;height:20px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffd9de' d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") center/contain no-repeat}
+.envelope.open .env-flap{transform:rotateX(180deg);z-index:0}
+.envelope.open .seal{opacity:0}
+.envelope.open .env-paper{transform:translateY(-92px)}
+.env-tip{font-size:13px;color:var(--muted);margin-top:18px;animation:nudge 2s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.envelope-zone.gone{display:none}
+.letter{display:none;margin-top:30px;padding:30px 24px 26px;text-align:left}
+.letter.show{display:block;animation:unfold .9s cubic-bezier(.2,.7,.2,1)}
+@keyframes unfold{from{opacity:0;transform:translateY(30px) scale(.96)}to{opacity:1;transform:none}}
+.letter p{font-family:var(--script);font-style:italic;font-size:21px;line-height:1.5;color:#43292e;margin-bottom:16px;opacity:0;transform:translateY(10px);transition:opacity .8s,transform .8s}
+.letter p.in{opacity:1;transform:none}
+.letter .sign{font-family:var(--script);font-style:italic;font-size:22px;margin-top:8px}
+.letter .sign-name{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+
+/* ---------- LÍNEA DEL TIEMPO ---------- */
+.timeline{position:relative;margin-top:34px;text-align:left;padding-left:22px}
+.timeline::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--crimson),rgba(193,18,31,.15))}
+.tl-item{position:relative;margin-bottom:18px}
+.tl-item::before{content:"";position:absolute;left:-21px;top:24px;width:12px;height:12px;border-radius:50%;background:var(--crimson);box-shadow:0 0 0 5px rgba(193,18,31,.15)}
+.tl-card{display:flex;gap:14px;padding:16px;align-items:flex-start}
+.tl-card img{width:58px;height:58px;border-radius:50%;object-fit:cover;flex:0 0 58px;box-shadow:0 0 0 3px #fff}
+.tl-icon{width:58px;height:58px;border-radius:50%;flex:0 0 58px;background:#fff;box-shadow:0 0 0 3px #fff,0 6px 14px -6px rgba(143,14,26,.35);display:flex;align-items:center;justify-content:center;font-size:28px}
+.hero-name{transition:opacity .45s ease,transform .45s ease}
+.hero-name.swap{opacity:0;transform:translateY(8px)}
+.tl-date{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--crimson);font-weight:700;margin-bottom:3px}
+.tl-title{font-family:var(--serif);font-size:19px;line-height:1.2}
+.tl-text{font-size:14px;line-height:1.5;color:#6b5157;margin-top:6px}
+
+/* ---------- VOZ ---------- */
+.voice{padding:18px;margin-top:28px;text-align:left}
+.voice-head{display:flex;align-items:center;gap:12px}
+.voice-head .mic{width:40px;height:40px;border-radius:50%;background:var(--crimson);display:flex;align-items:center;justify-content:center;color:#fff}
+.voice-head .mic svg{width:18px;height:18px}
+.voice-head small{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.voice-head b{display:block;font-size:15px}
+.wave{display:flex;align-items:center;gap:3px;height:54px;margin:16px 0 10px}
+.wave i{flex:1;border-radius:2px;background:rgba(193,18,31,.22);transition:background .2s}
+.wave i.on{background:var(--crimson)}
+.voice-ctrl{display:flex;align-items:center;gap:12px}
+.voice-ctrl button{width:46px;height:46px;border-radius:50%;background:var(--crimson);color:#fff;display:flex;align-items:center;justify-content:center;flex:0 0 46px}
+.voice-ctrl button svg{width:20px;height:20px}
+.voice-bar{flex:1;height:3px;background:rgba(193,18,31,.15);border-radius:3px;overflow:hidden}
+.voice-bar i{display:block;height:100%;width:0;background:var(--crimson)}
+.voice-time{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;min-width:34px;text-align:right}
+
+/* ---------- RAZONES ---------- */
+.deck{position:relative;height:300px;margin:34px auto 0;max-width:330px;touch-action:pan-y}
+.rcard{position:absolute;inset:0;border-radius:26px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px 26px;text-align:center;box-shadow:var(--shadow);background:#fff;transition:transform .5s cubic-bezier(.2,.7,.2,1),opacity .5s;user-select:none;-webkit-user-select:none}
+.rcard:nth-child(3n+1){background:linear-gradient(160deg,#fff,#fde8ec)}
+.rcard:nth-child(3n+2){background:linear-gradient(160deg,#fff4f6,#f8d6dd)}
+.rcard:nth-child(3n){background:linear-gradient(160deg,#fffafa,#f6e2e6)}
+.rcard .num{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--crimson)}
+.rcard .txt{font-family:var(--serif);font-size:23px;line-height:1.3;margin-top:14px}
+.rcard .icon-heart{font-size:22px;margin-top:18px}
+.rcard.final{background:linear-gradient(160deg,#c1121f,#8f0e1a);color:#fff}
+.rcard.final .num{color:#ffd9de}
+.rcard.final .icon-heart{filter:brightness(0) invert(1)}
+.rcard.fly{transform:translate(var(--fx,120%),-10px) rotate(var(--fr,18deg)) !important;opacity:0 !important;pointer-events:none}
+.rcard.gone{visibility:hidden}
+.deck-tip{font-size:12px;color:var(--muted);margin-top:16px;min-height:1.4em}
+.again{margin-top:12px;font-size:13px;font-weight:700;color:var(--crimson);padding:10px 18px;border-radius:999px;background:rgba(255,255,255,.7);display:none}
+
+/* ---------- RASCA ---------- */
+.scratch{position:relative;width:78%;max-width:330px;aspect-ratio:3/4;margin:34px auto 0;border-radius:26px;overflow:hidden;box-shadow:var(--shadow)}
+.scratch img{width:100%;height:100%;object-fit:cover}
+.scratch .msg{position:absolute;left:0;right:0;bottom:0;padding:60px 18px 20px;color:#fff;font-family:var(--serif);font-style:italic;font-size:21px;line-height:1.3;background:linear-gradient(transparent,rgba(30,6,12,.75))}
+.scratch canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;transition:opacity .8s}
+.scratch canvas.cleared{opacity:0;pointer-events:none}
+
+/* ---------- PREGUNTA ---------- */
+.ask{padding:30px 18px 24px;margin-top:30px}
+.ask-q{font-family:var(--serif);font-size:25px;line-height:1.25}
+.ask-zone{position:relative;height:170px;margin-top:10px}
+.btn-yes,.btn-no{position:absolute;top:50%;padding:14px 28px;border-radius:999px;font-weight:700;font-size:16px;transition:transform .3s cubic-bezier(.3,1.5,.5,1),left .35s ease,top .35s ease;white-space:nowrap}
+.btn-yes{left:14%;transform:translateY(-50%) scale(var(--grow,1));background:var(--crimson);color:#fff;box-shadow:0 12px 24px -10px rgba(193,18,31,.7);z-index:2}
+.btn-no{right:14%;transform:translateY(-50%);background:rgba(255,255,255,.8);color:var(--ink)}
+.ask-note{font-size:13px;color:var(--muted);min-height:1.4em}
+
+/* ---------- FINAL / MODAL ---------- */
+.celebrate{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(58,15,24,.45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);opacity:0;visibility:hidden;transition:opacity .5s,visibility 0s linear .5s}
+.celebrate.show{opacity:1;visibility:visible;transition:opacity .5s}
+.cel-card{width:100%;max-width:360px;background:#fff8f9;border-radius:30px;overflow:hidden;text-align:center;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);transform:scale(.85);transition:transform .6s cubic-bezier(.3,1.5,.5,1)}
+.celebrate.show .cel-card{transform:none}
+.cel-card img{width:100%;height:260px;object-fit:cover;object-position:50% 18%}
+.cel-body{padding:22px 22px 24px}
+.cel-title{font-family:var(--serif);font-size:26px;color:var(--crimson)}
+.cel-text{font-family:var(--script);font-style:italic;font-size:20px;line-height:1.45;margin-top:10px;color:#4a2e34}
+.cel-love{font-family:var(--serif);font-size:20px;margin-top:14px}
+.cel-close{margin-top:18px;font-size:13px;font-weight:700;color:var(--crimson);padding:10px 18px;border-radius:999px;background:#fbe4e8}
+
+footer{padding:70px 22px calc(50px + env(safe-area-inset-bottom));text-align:center}
+footer .big{font-family:var(--serif);font-style:italic;font-size:28px;color:var(--crimson)}
+footer p{font-size:12px;color:var(--muted);margin-top:10px;letter-spacing:.08em}
+
+/* ---------- LIGHTBOX ---------- */
+.lightbox{position:fixed;inset:0;z-index:70;background:rgba(18,6,9,.97);opacity:0;visibility:hidden;transition:opacity .35s,visibility 0s linear .35s}
+.lightbox.show{opacity:1;visibility:visible;transition:opacity .35s}
+.lb-track{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.lb-track::-webkit-scrollbar{display:none}
+.lb-item{flex:0 0 100%;height:100%;scroll-snap-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:calc(64px + env(safe-area-inset-top)) 12px calc(70px + env(safe-area-inset-bottom))}
+.lb-item img,.lb-item video{max-height:100%;max-width:100%;border-radius:14px;object-fit:contain}
+.lb-cap{position:absolute;left:0;right:0;bottom:calc(22px + env(safe-area-inset-bottom));text-align:center;color:#fff;font-family:var(--serif);font-style:italic;font-size:18px;padding:0 20px;pointer-events:none}
+.lb-close{position:absolute;top:calc(14px + env(safe-area-inset-top));right:14px;width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;font-size:22px;z-index:2}
+.lb-count{position:absolute;top:calc(24px + env(safe-area-inset-top));left:0;right:0;text-align:center;color:rgba(255,255,255,.75);font-size:12px;letter-spacing:.14em;pointer-events:none}
+
+/* ---------- MÚSICA FLOTANTE ---------- */
+.music-fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:40;width:48px;height:48px;border-radius:50%;background:var(--crimson);color:#fff;display:none;align-items:center;justify-content:center;box-shadow:0 10px 22px -8px rgba(143,14,26,.7)}
+.music-fab.show{display:flex}
+.music-fab svg{width:20px;height:20px}
+.music-fab.playing svg{animation:spin 4s linear infinite}
+
+/* ---------- CORAZONES AL TOCAR ---------- */
+.fx{position:fixed;pointer-events:none;z-index:80;width:var(--s,22px);height:var(--s,22px);background:var(--heart) center/contain no-repeat;left:0;top:0;margin:calc(var(--s,22px)/-2) 0 0 calc(var(--s,22px)/-2)}
+.fx.up{animation:fxUp 1.1s ease-out forwards}
+@keyframes fxUp{0%{transform:translate(0,0) scale(.4);opacity:1}100%{transform:translate(var(--dx,0),-90px) scale(1.1);opacity:0}}
+.fx.burst{animation:fxBurst var(--t,1.3s) cubic-bezier(.15,.7,.3,1) forwards}
+@keyframes fxBurst{0%{transform:translate(0,0) scale(.3) rotate(0);opacity:1}80%{opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(1) rotate(var(--r));opacity:0}}
+
+@media (prefers-reduced-motion:reduce){
+  .hearts-bg{display:none}
+  #bigHeart svg,.disc,.env-tip{animation:none}
+  .reveal{transition:none;opacity:1;transform:none}
+}
+</style>
+</head>
+<body class="locked">
+<div class="bg"></div>
+<div class="hearts-bg" id="heartsBg"></div>
+
+<!-- ============ INTRO ============ -->
+<div id="intro" role="dialog" aria-label="Regalo">
+  <div class="intro-inner">
+    <p class="eyebrow">Hecho con amor</p>
+    <div class="card intro-card">
+      <p class="eyebrow">Para</p>
+      <h1 class="intro-name" data-ella></h1>
+      <p class="intro-from">De <span data-el></span> <i class="icon-heart"></i></p>
+      <p class="intro-quote" id="introQuote"></p>
+    </div>
+    <button id="bigHeart" aria-label="Toca el corazón">
+      <span class="glow"></span>
+      <svg viewBox="0 0 24 24"><defs><linearGradient id="hg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e3283a"/><stop offset="1" stop-color="#9e0d19"/></linearGradient></defs><path fill="url(#hg)" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/><path fill="#fff" opacity=".28" d="M7.3 5.2c-1.6.2-2.9 1.5-3 3.3-.1.6.8.8 1 .2.3-1.2 1.1-2.1 2.2-2.4.6-.2.5-1.2-.2-1.1z"/></svg>
+    </button>
+    <div class="taps" id="taps"><i></i><i></i><i></i><i></i><i></i></div>
+    <p class="intro-hint" id="introHint">Toca el corazón para descubrir tu regalo</p>
+  </div>
+</div>
+
+<main class="wrap" id="main">
+  <!-- ============ PORTADA ============ -->
+  <header class="hero">
+    <img id="heroImg" alt="Nosotros" fetchpriority="high">
+    <div class="hero-top"><span class="pill">1 año</span><span class="pill">♡ Solo para ti</span></div>
+    <div class="hero-text">
+      <p class="eyebrow">Para</p>
+      <h1 class="hero-name" data-ella></h1>
+      <p class="hero-sub"><span data-el></span> y tú</p>
+      <p class="hero-date" id="heroDate"></p>
+    </div>
+    <div class="scroll-hint">Desliza<span></span></div>
+  </header>
+
+  <!-- ============ CONTADOR ============ -->
+  <section class="section">
+    <div class="reveal">
+      <p class="eyebrow">Recuerdos</p>
+      <h2 class="h2">Un año <em>contigo</em></h2>
+    </div>
+    <div class="card counter reveal">
+      <div class="badge" id="badge" hidden></div>
+      <div class="days" id="days">0</div>
+      <div class="days-label">Días juntos</div>
+      <div class="since" id="since"></div>
+      <div class="clock">
+        <div><b id="hh">00</b><small>Horas</small></div>
+        <div><b id="mm">00</b><small>Min</small></div>
+        <div><b id="ss">00</b><small>Seg</small></div>
+      </div>
+      <p class="minutes">Eso es más de <b id="totalMin">0</b> minutos queriéndote.</p>
+      <p class="place" id="place" hidden></p>
+    </div>
+  </section>
+
+  <!-- ============ CANCIÓN ============ -->
+  <section class="section" id="songSection" hidden>
+    <div class="reveal">
+      <p class="eyebrow">Nuestra canción</p>
+      <h2 class="h2">La que suena a <em>nosotros</em></h2>
+    </div>
+    <div class="disc-wrap reveal">
+      <div class="disc" id="disc"><img id="discImg" alt=""></div>
+      <button class="disc-btn" id="discBtn" aria-label="Reproducir"></button>
+    </div>
+    <p class="song-title reveal" id="songTitle"></p>
+    <p class="song-artist reveal" id="songArtist"></p>
+    <div class="spotify reveal" id="spotify" hidden></div>
+  </section>
+
+  <!-- ============ GALERÍA ============ -->
+  <section class="section" style="padding-left:0;padding-right:0">
+    <div class="reveal" style="padding:0 22px">
+      <p class="eyebrow">Galería</p>
+      <h2 class="h2">Momentos que <em>no se borran</em></h2>
+    </div>
+    <div class="carousel reveal">
+      <div class="count-pill" id="countPill">1 / 1</div>
+      <div class="track" id="track"></div>
+      <div class="car-nav">
+        <button id="prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <div class="progress"><i id="progress"></i></div>
+        <button id="next" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+      <p class="tap-tip">Desliza y toca una foto para verla en grande</p>
+    </div>
+  </section>
+
+  <!-- ============ CARTA ============ -->
+  <section class="section">
+    <div class="reveal">
+      <p class="eyebrow">Una carta para ti</p>
+      <h2 class="h2">Lo que <em>siento</em> por ti</h2>
+    </div>
+    <div class="envelope-zone reveal" id="envZone">
+      <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Abrir la carta">
+        <div class="env-back"></div>
+        <div class="env-paper"><p>Para ti…</p><span></span><span style="width:80%"></span><span style="width:60%"></span></div>
+        <div class="env-front"></div>
+        <div class="env-flap"></div>
+        <div class="seal"><i></i></div>
+      </div>
+      <p class="env-tip">Toca el sobre para abrirlo</p>
+    </div>
+    <article class="card letter" id="letter"></article>
+  </section>
+
+  <!-- ============ LÍNEA DEL TIEMPO ============ -->
+  <section class="section">
+    <div class="reveal">
+      <p class="eyebrow">Nuestra historia</p>
+      <h2 class="h2">Nuestra <em>línea</em> del tiempo</h2>
+    </div>
+    <div class="timeline" id="timeline"></div>
+    <div class="card voice reveal" id="voice" hidden>
+      <div class="voice-head">
+        <div class="mic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z"/></svg></div>
+        <div><small>Mensaje de voz</small><b>De <span data-el></span></b></div>
+      </div>
+      <div class="wave" id="wave"></div>
+      <div class="voice-ctrl">
+        <button id="voiceBtn" aria-label="Reproducir mensaje"></button>
+        <div class="voice-bar"><i id="voiceBar"></i></div>
+        <span class="voice-time" id="voiceTime">0:00</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RAZONES ============ -->
+  <section class="section">
+    <div class="reveal">
+      <p class="eyebrow">Para que nunca lo olvides</p>
+      <h2 class="h2">Razones por las que <em>te amo</em></h2>
+    </div>
+    <div class="deck reveal" id="deck"></div>
+    <p class="deck-tip" id="deckTip">Toca o desliza la tarjeta</p>
+    <button class="again" id="again">Verlas otra vez ↺</button>
+  </section>
+
+  <!-- ============ RASCA ============ -->
+  <section class="section">
+    <div class="reveal">
+      <p class="eyebrow">Una sorpresa</p>
+      <h2 class="h2">Rasca con tu <em>dedo</em></h2>
+    </div>
+    <div class="scratch reveal" id="scratch">
+      <img id="scratchImg" alt="">
+      <div class="msg" id="scratchMsg"></div>
+      <canvas id="scratchCanvas"></canvas>
+    </div>
+  </section>
+
+  <!-- ============ PREGUNTA ============ -->
+  <section class="section">
+    <div class="card ask reveal">
+      <p class="eyebrow">Una última cosa</p>
+      <p class="ask-q" id="askQ" style="margin-top:12px"></p>
+      <div class="ask-zone" id="askZone">
+        <button class="btn-yes" id="yes">Sí 💗</button>
+        <button class="btn-no" id="no">No</button>
+      </div>
+      <p class="ask-note" id="askNote"></p>
+    </div>
+  </section>
+
+  <footer>
+    <p class="big">Te amo <i class="icon-heart"></i></p>
+    <p>Hecho con todo mi amor por <span data-el></span></p>
+    <p id="footDate"></p>
+  </footer>
+</main>
+
+<div class="celebrate" id="celebrate">
+  <div class="cel-card">
+    <img id="celImg" alt="">
+    <div class="cel-body">
+      <p class="cel-title" id="celTitle"></p>
+      <p class="cel-text" id="celText"></p>
+      <p class="cel-love">Te amo <i class="icon-heart"></i></p>
+      <button class="cel-close" id="celClose">Seguir viendo</button>
+    </div>
+  </div>
+</div>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lb-count" id="lbCount"></div>
+  <button class="lb-close" id="lbClose" aria-label="Cerrar">✕</button>
+  <div class="lb-track" id="lbTrack"></div>
+  <div class="lb-cap" id="lbCap"></div>
+</div>
+
+<button class="music-fab" id="musicFab" aria-label="Música"></button>
+
+<script src="config.js"></script>
+<script>
+(function(){
+"use strict";
+var C = window.CONFIG || {};
+var $ = function(id){ return document.getElementById(id); };
+var MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+var ICON = {
+  play:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v13.72a1 1 0 0 0 1.52.85l10.6-6.86a1 1 0 0 0 0-1.7L9.52 4.29A1 1 0 0 0 8 5.14z"/></svg>',
+  pause:'<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14" rx="1.2"/><rect x="14" y="5" width="4" height="14" rx="1.2"/></svg>',
+  muted:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M23 9l-6 6M17 9l6 6"/></svg>',
+  sound:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg>',
+  note:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6z"/></svg>'
+};
+var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- textos básicos ---------- */
+var ella = C.nombreElla || "Mi amor", el = C.nombreEl || "";
+document.querySelectorAll("[data-ella]").forEach(function(n){ n.textContent = ella; });
+document.querySelectorAll("[data-el]").forEach(function(n){ n.textContent = el; });
+/* apodos que cambian en la portada */
+var apodos = (C.apodos || []).filter(Boolean);
+if (apodos.length > 1 && !reduceMotion){
+  var hn = document.querySelector(".hero-name"), ai = 0;
+  setInterval(function(){
+    hn.classList.add("swap");
+    setTimeout(function(){ ai = (ai + 1) % apodos.length; hn.textContent = apodos[ai]; hn.classList.remove("swap"); }, 450);
+  }, 2600);
+}
+$("introQuote").textContent = C.fraseInicio ? "“" + C.fraseInicio + "”" : "";
+
+var p = String(C.fechaInicio || "2025-11-22").split("-").map(Number);
+var start = new Date(p[0], (p[1]||1)-1, p[2]||1, 0, 0, 0);
+var fechaLarga = start.getDate() + " de " + MESES[start.getMonth()] + " de " + start.getFullYear();
+$("heroDate").textContent = (el ? "De " + el + " · " : "") + start.getDate() + " de " + MESES[start.getMonth()] + ", " + start.getFullYear();
+$("since").textContent = "desde el " + fechaLarga;
+var hoy = new Date();
+$("footDate").textContent = hoy.getDate() + " · " + MESES[hoy.getMonth()] + " · " + hoy.getFullYear();
+$("heroImg").src = C.fotoPortada || "";
+if (C.dondeEmpezo){ var pl = $("place"); pl.hidden = false; pl.textContent = "📍 Todo empezó en " + C.dondeEmpezo; }
+
+/* ---------- corazones de fondo ---------- */
+if (!reduceMotion){
+  var hb = $("heartsBg");
+  for (var i=0;i<14;i++){
+    var h = document.createElement("i");
+    h.style.left = (Math.random()*100) + "%";
+    h.style.setProperty("--s", (10 + Math.random()*20) + "px");
+    h.style.setProperty("--d", (12 + Math.random()*14) + "s");
+    h.style.setProperty("--delay", (-Math.random()*20) + "s");
+    h.style.setProperty("--x", (Math.random()*80-40) + "px");
+    h.style.setProperty("--o", (0.25 + Math.random()*0.4).toFixed(2));
+    hb.appendChild(h);
+  }
+}
+
+/* ---------- efectos de corazones ---------- */
+function floatHeart(x, y){
+  var d = document.createElement("i");
+  d.className = "fx up";
+  d.style.left = x + "px"; d.style.top = y + "px";
+  d.style.setProperty("--s", (16 + Math.random()*16) + "px");
+  d.style.setProperty("--dx", (Math.random()*40-20) + "px");
+  document.body.appendChild(d);
+  setTimeout(function(){ d.remove(); }, 1200);
+}
+function burst(x, y, n, spread){
+  n = n || 18; spread = spread || 160;
+  for (var i=0;i<n;i++){
+    var d = document.createElement("i");
+    var a = Math.random()*Math.PI*2, r = spread*(0.4+Math.random()*0.8);
+    d.className = "fx burst";
+    d.style.left = x + "px"; d.style.top = y + "px";
+    d.style.setProperty("--s", (12 + Math.random()*22) + "px");
+    d.style.setProperty("--dx", Math.cos(a)*r + "px");
+    d.style.setProperty("--dy", (Math.sin(a)*r - 40) + "px");
+    d.style.setProperty("--r", (Math.random()*90-45) + "deg");
+    d.style.setProperty("--t", (0.9 + Math.random()*0.8) + "s");
+    if (Math.random() < .4) d.style.backgroundImage = "var(--heart-pink)";
+    document.body.appendChild(d);
+    (function(el){ setTimeout(function(){ el.remove(); }, 1900); })(d);
+  }
+}
+function buzz(ms){ try{ if (navigator.vibrate) navigator.vibrate(ms); }catch(e){} }
+document.addEventListener("pointerdown", function(e){
+  if (!document.body.classList.contains("opened")) return;
+  if (e.target.closest("button, canvas, .track, .lightbox, .deck, iframe, video, .celebrate")) return;
+  floatHeart(e.clientX, e.clientY);
+}, {passive:true});
+
+/* ---------- INTRO: tocar el corazón ---------- */
+var taps = 0, need = 5;
+var tapMsgs = ["Cada toque abre un pedacito del recuerdo…", "Sigue…", "Ya casi…", "Un poquito más…", "💗"];
+var big = $("bigHeart");
+big.addEventListener("click", function(e){
+  if (taps >= need) return;
+  taps++;
+  buzz(15);
+  var r = big.getBoundingClientRect();
+  burst(r.left + r.width/2, r.top + r.height/2, 10 + taps*3, 90 + taps*25);
+  big.classList.add("pop");
+  big.style.transform = "scale(" + (1 + taps*0.08) + ")";
+  setTimeout(function(){ big.classList.remove("pop"); if (taps < need) big.style.transform = "scale(" + (1 + taps*0.06) + ")"; }, 220);
+  $("taps").children[taps-1].classList.add("on");
+  $("introHint").textContent = tapMsgs[Math.min(taps-1, tapMsgs.length-1)];
+  if (taps >= need) openGift();
+});
+function openGift(){
+  buzz([30,40,60]);
+  var intro = $("intro");
+  setTimeout(function(){
+    burst(window.innerWidth/2, window.innerHeight/2, 46, Math.max(window.innerWidth, 380)*0.6);
+    intro.classList.add("finale");
+    intro.classList.add("done");
+    document.body.classList.remove("locked");
+    document.body.classList.add("opened");
+    window.scrollTo(0,0);
+    if (audio) playSong();
+  }, 380);
+}
+
+/* ---------- contador ---------- */
+function pad(n){ return (n<10?"0":"") + n; }
+function tick(){
+  var now = new Date(), diff = Math.max(0, now - start);
+  var days = Math.floor(diff/86400000), rest = diff - days*86400000;
+  $("days").textContent = days.toLocaleString("es-MX");
+  $("hh").textContent = pad(Math.floor(rest/3600000));
+  $("mm").textContent = pad(Math.floor(rest%3600000/60000));
+  $("ss").textContent = pad(Math.floor(rest%60000/1000));
+  $("totalMin").textContent = Math.floor(diff/60000).toLocaleString("es-MX");
+  var years = now.getFullYear() - start.getFullYear();
+  var b = $("badge");
+  if (years > 0 && now.getMonth() === start.getMonth() && now.getDate() === start.getDate()){
+    b.hidden = false; b.textContent = "🎉 ¡Hoy cumplimos " + years + (years === 1 ? " año" : " años") + "!";
+  } else if (days >= 365){
+    b.hidden = false; b.textContent = "💗 Más de " + Math.floor(days/365) + (Math.floor(days/365) === 1 ? " año" : " años") + " juntos";
+  } else { b.hidden = true; }
+}
+tick(); setInterval(tick, 1000);
+
+/* ---------- aparecer al hacer scroll ---------- */
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
+}, {threshold:.15, rootMargin:"0px 0px -6% 0px"});
+function observeReveals(){ document.querySelectorAll(".reveal:not(.in)").forEach(function(n){ io.observe(n); }); }
+
+/* ---------- canción ---------- */
+var song = C.cancion || {}, audio = null;
+function setDisc(playing){
+  $("disc").classList.toggle("playing", playing);
+  $("discBtn").innerHTML = playing ? ICON.pause : ICON.play;
+  var f = $("musicFab"); f.classList.toggle("playing", playing);
+}
+function playSong(){ if (!audio) return; audio.play().then(function(){ setDisc(true); }).catch(function(){ setDisc(false); }); }
+if (song.spotify || song.archivo){
+  $("songSection").hidden = false;
+  $("discImg").src = C.fotoDisco || C.fotoPortada || "";
+  $("songTitle").textContent = song.titulo || "";
+  $("songArtist").textContent = song.artista || "";
+  $("discBtn").innerHTML = ICON.play;
+  if (song.archivo){
+    audio = new Audio(song.archivo); audio.loop = true; audio.preload = "auto";
+    audio.addEventListener("pause", function(){ setDisc(false); });
+    audio.addEventListener("play", function(){ setDisc(true); });
+    var fab = $("musicFab"); fab.classList.add("show"); fab.innerHTML = ICON.note;
+    var toggle = function(){ if (audio.paused) playSong(); else audio.pause(); };
+    fab.addEventListener("click", toggle);
+    $("discBtn").addEventListener("click", toggle);
+  } else {
+    $("discBtn").addEventListener("click", function(){
+      var d = $("disc"); var on = !d.classList.contains("playing"); setDisc(on);
+      $("spotify").scrollIntoView({behavior:"smooth", block:"center"});
+    });
+  }
+  var m = String(song.spotify || "").match(/(track|album|playlist)\/([A-Za-z0-9]+)/);
+  if (m){
+    var sp = $("spotify"); sp.hidden = false;
+    var ifr = document.createElement("iframe");
+    ifr.src = "https://open.spotify.com/embed/" + m[1] + "/" + m[2] + "?utm_source=generator";
+    ifr.allow = "autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture";
+    ifr.loading = "lazy";
+    sp.appendChild(ifr);
+  }
+}
+
+/* ---------- galería ---------- */
+var G = C.galeria || [], track = $("track"), slides = [];
+G.forEach(function(item, i){
+  var fig = document.createElement("figure");
+  fig.className = "slide"; fig.dataset.i = i;
+  if (item.tipo === "video"){
+    var v = document.createElement("video");
+    v.src = item.src; if (item.poster) v.poster = item.poster;
+    v.muted = true; v.loop = true; v.playsInline = true; v.setAttribute("playsinline",""); v.setAttribute("muted","");
+    v.preload = "metadata";
+    fig.appendChild(v);
+    var live = document.createElement("span"); live.className = "live"; live.textContent = "● EN VIVO"; fig.appendChild(live);
+    if (item.sonido){
+      var sb = document.createElement("button"); sb.className = "snd"; sb.innerHTML = ICON.muted; sb.setAttribute("aria-label","Sonido");
+      sb.addEventListener("click", function(ev){ ev.stopPropagation(); v.muted = !v.muted; sb.innerHTML = v.muted ? ICON.muted : ICON.sound; if (v.paused) v.play().catch(function(){}); });
+      fig.appendChild(sb);
+    }
+  } else {
+    var img = document.createElement("img");
+    img.src = item.src; img.alt = item.texto || ""; img.loading = i < 3 ? "eager" : "lazy"; img.decoding = "async";
+    fig.appendChild(img);
+  }
+  if (item.texto){ var cap = document.createElement("figcaption"); cap.textContent = item.texto; fig.appendChild(cap); }
+  fig.addEventListener("click", function(){ openLightbox(i); });
+  track.appendChild(fig); slides.push(fig);
+});
+var current = 0;
+function slideStep(){ return slides.length > 1 ? slides[1].offsetLeft - slides[0].offsetLeft : 1; }
+function updateCarousel(){
+  var idx = Math.round(track.scrollLeft / slideStep());
+  idx = Math.max(0, Math.min(slides.length-1, idx));
+  if (idx !== current || !slides[idx].classList.contains("active")){
+    current = idx;
+    slides.forEach(function(s, k){
+      s.classList.toggle("active", k === idx);
+      var v = s.querySelector("video");
+      if (v){ if (k === idx) v.play().catch(function(){}); else v.pause(); }
+    });
+  }
+  $("countPill").textContent = (idx+1) + " / " + slides.length;
+  $("progress").style.width = ((idx+1)/slides.length*100) + "%";
+}
+var raf = 0;
+track.addEventListener("scroll", function(){ cancelAnimationFrame(raf); raf = requestAnimationFrame(updateCarousel); }, {passive:true});
+function goTo(i){ i = Math.max(0, Math.min(slides.length-1, i)); track.scrollTo({left: i*slideStep(), behavior:"smooth"}); }
+$("prev").addEventListener("click", function(){ goTo(current-1); });
+$("next").addEventListener("click", function(){ goTo(current+1); });
+if (slides.length){ slides[0].classList.add("active"); }
+// pausar videos del carrusel cuando no se ven
+new IntersectionObserver(function(en){
+  en.forEach(function(e){ var v = slides[current] && slides[current].querySelector("video"); if (!v) return; if (e.isIntersecting) v.play().catch(function(){}); else v.pause(); });
+}, {threshold:.3}).observe(track);
+
+/* ---------- lightbox ---------- */
+var lb = $("lightbox"), lbTrack = $("lbTrack"), lbBuilt = false, lbIdx = 0;
+function buildLightbox(){
+  G.forEach(function(item){
+    var d = document.createElement("div"); d.className = "lb-item";
+    if (item.tipo === "video"){
+      var v = document.createElement("video"); v.src = item.src; if (item.poster) v.poster = item.poster;
+      v.controls = true; v.playsInline = true; v.setAttribute("playsinline",""); v.loop = true; v.preload = "none";
+      d.appendChild(v);
+    } else {
+      var img = document.createElement("img"); img.src = item.src; img.alt = item.texto || ""; img.loading = "lazy"; d.appendChild(img);
+    }
+    lbTrack.appendChild(d);
+  });
+  lbBuilt = true;
+}
+function lbUpdate(){
+  var i = Math.round(lbTrack.scrollLeft / lbTrack.clientWidth);
+  i = Math.max(0, Math.min(G.length-1, i));
+  if (i !== lbIdx){ var old = lbTrack.children[lbIdx].querySelector("video"); if (old) old.pause(); }
+  lbIdx = i;
+  $("lbCount").textContent = (i+1) + " / " + G.length;
+  $("lbCap").textContent = G[i].texto || "";
+}
+function openLightbox(i){
+  if (!lbBuilt) buildLightbox();
+  var cv = slides[current] && slides[current].querySelector("video"); if (cv) cv.pause();
+  lb.classList.add("show"); lb.setAttribute("aria-hidden","false");
+  document.body.style.overflow = "hidden";
+  lbIdx = i;
+  requestAnimationFrame(function(){ lbTrack.scrollLeft = i * lbTrack.clientWidth; lbUpdate(); });
+}
+function closeLightbox(){
+  lb.classList.remove("show"); lb.setAttribute("aria-hidden","true");
+  document.body.style.overflow = "";
+  lbTrack.querySelectorAll("video").forEach(function(v){ v.pause(); });
+  goTo(lbIdx);
+}
+lbTrack.addEventListener("scroll", function(){ requestAnimationFrame(lbUpdate); }, {passive:true});
+$("lbClose").addEventListener("click", closeLightbox);
+document.addEventListener("keydown", function(e){
+  if (!lb.classList.contains("show")) return;
+  if (e.key === "Escape") closeLightbox();
+  if (e.key === "ArrowRight") lbTrack.scrollBy({left: lbTrack.clientWidth, behavior:"smooth"});
+  if (e.key === "ArrowLeft") lbTrack.scrollBy({left: -lbTrack.clientWidth, behavior:"smooth"});
+});
+
+/* ---------- carta ---------- */
+var letter = $("letter");
+(C.carta || []).forEach(function(t){ var pp = document.createElement("p"); pp.textContent = t; letter.appendChild(pp); });
+var sign = document.createElement("p"); sign.className = "sign"; sign.innerHTML = "Con todo mi amor,<br>";
+var sn = document.createElement("span"); sn.textContent = el + " "; sign.appendChild(sn);
+var sh = document.createElement("i"); sh.className = "icon-heart"; sign.appendChild(sh);
+letter.appendChild(sign);
+var sname = document.createElement("p"); sname.className = "sign-name"; sname.textContent = "— " + el; letter.appendChild(sname);
+$("envelope").addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " "){ e.preventDefault(); this.click(); } });
+$("envelope").addEventListener("click", function(){
+  var env = $("envelope"); if (env.classList.contains("open")) return;
+  env.classList.add("open"); buzz(20);
+  var r = env.getBoundingClientRect(); burst(r.left + r.width/2, r.top + r.height/3, 22, 150);
+  setTimeout(function(){
+    $("envZone").classList.add("gone");
+    letter.classList.add("show");
+    var ps = letter.querySelectorAll("p");
+    ps.forEach(function(pp, k){ setTimeout(function(){ pp.classList.add("in"); }, 350 + k*550); });
+  }, 1500);
+});
+
+/* ---------- línea del tiempo ---------- */
+var tl = $("timeline");
+(C.lineaDelTiempo || []).forEach(function(it){
+  var w = document.createElement("div"); w.className = "tl-item reveal";
+  var c = document.createElement("div"); c.className = "card tl-card";
+  if (it.foto){ var im = document.createElement("img"); im.src = it.foto; im.alt = ""; im.loading = "lazy"; c.appendChild(im); }
+  else if (it.icono){ var ic = document.createElement("div"); ic.className = "tl-icon"; ic.textContent = it.icono; c.appendChild(ic); }
+  var tx = document.createElement("div");
+  if (it.fecha){ var dt = document.createElement("div"); dt.className = "tl-date"; dt.textContent = it.fecha; tx.appendChild(dt); }
+  var ti = document.createElement("div"); ti.className = "tl-title"; ti.textContent = it.titulo || ""; tx.appendChild(ti);
+  var te = document.createElement("div"); te.className = "tl-text"; te.textContent = it.texto || ""; tx.appendChild(te);
+  c.appendChild(tx); w.appendChild(c); tl.appendChild(w);
+});
+
+/* ---------- mensaje de voz ---------- */
+if (C.mensajeDeVoz){
+  $("voice").hidden = false;
+  var wave = $("wave"), bars = [], seed = 7;
+  for (var b=0;b<44;b++){ seed = (seed*9301+49297)%233280; var hgt = 18 + (seed/233280)*82 * (0.55 + 0.45*Math.sin(b/4)); var bi = document.createElement("i"); bi.style.height = Math.max(12, Math.min(100, hgt)) + "%"; wave.appendChild(bi); bars.push(bi); }
+  var va = new Audio(C.mensajeDeVoz); va.preload = "metadata";
+  var vb = $("voiceBtn"); vb.innerHTML = ICON.play;
+  var fmt = function(s){ s = Math.floor(s||0); return Math.floor(s/60) + ":" + pad(s%60); };
+  va.addEventListener("loadedmetadata", function(){ if (isFinite(va.duration)) $("voiceTime").textContent = fmt(va.duration); });
+  va.addEventListener("timeupdate", function(){
+    var pr = va.duration ? va.currentTime/va.duration : 0;
+    $("voiceBar").style.width = (pr*100) + "%";
+    bars.forEach(function(x, k){ x.classList.toggle("on", k/bars.length < pr); });
+    $("voiceTime").textContent = fmt(va.currentTime);
+  });
+  va.addEventListener("ended", function(){ vb.innerHTML = ICON.play; });
+  vb.addEventListener("click", function(){
+    if (va.paused){ if (audio && !audio.paused) audio.pause(); va.play(); vb.innerHTML = ICON.pause; }
+    else { va.pause(); vb.innerHTML = ICON.play; }
+  });
+}
+
+/* ---------- razones ---------- */
+var deck = $("deck"), reasons = (C.razones || []).slice(), cards = [], top = 0;
+function buildDeck(){
+  deck.innerHTML = ""; cards = []; top = 0;
+  var all = reasons.map(function(t, i){ return {num: "Razón #" + (i+1), txt: t}; });
+  if (C.razonFinal) all.push({num: "Y la más importante…", txt: C.razonFinal, final: true});
+  for (var i = all.length-1; i >= 0; i--){
+    var c = document.createElement("div"); c.className = "rcard" + (all[i].final ? " final" : "");
+    var n = document.createElement("div"); n.className = "num"; n.textContent = all[i].num;
+    var t = document.createElement("div"); t.className = "txt"; t.textContent = all[i].txt;
+    var h = document.createElement("i"); h.className = "icon-heart";
+    c.appendChild(n); c.appendChild(t); c.appendChild(h);
+    deck.appendChild(c); cards.unshift(c);
+  }
+  layoutDeck();
+  $("again").style.display = "none";
+  $("deckTip").textContent = "Toca o desliza la tarjeta · 1 de " + cards.length;
+}
+function layoutDeck(){
+  cards.forEach(function(c, i){
+    var k = i - top;
+    if (k < 0) return;
+    c.style.zIndex = 100 - k;
+    c.style.transform = k > 3 ? "translateY(30px) scale(.86)" : "translateY(" + (k*10) + "px) scale(" + (1 - k*0.045) + ") rotate(" + (k%2 ? 2 : -2)*(k?1:0) + "deg)";
+    c.style.opacity = k > 3 ? 0 : 1;
+  });
+}
+function nextCard(dir){
+  if (top >= cards.length) return;
+  var c = cards[top];
+  c.style.setProperty("--fx", (dir < 0 ? -130 : 130) + "%");
+  c.style.setProperty("--fr", (dir < 0 ? -18 : 18) + "deg");
+  c.classList.add("fly");
+  setTimeout(function(){ c.classList.add("gone"); }, 520);
+  buzz(10);
+  top++;
+  layoutDeck();
+  if (top >= cards.length){
+    var r = deck.getBoundingClientRect(); burst(r.left + r.width/2, r.top + r.height/2, 30, 170);
+    $("deckTip").textContent = "Y aún me faltan muchas 💗";
+    $("again").style.display = "inline-block";
+  } else {
+    $("deckTip").textContent = (top+1) + " de " + cards.length;
+    if (cards[top].classList.contains("final")){ var r2 = deck.getBoundingClientRect(); burst(r2.left + r2.width/2, r2.top + r2.height/2, 24, 150); }
+  }
+}
+var sx = null, sy = null;
+deck.addEventListener("pointerdown", function(e){ sx = e.clientX; sy = e.clientY; });
+deck.addEventListener("pointerup", function(e){
+  if (sx === null) return;
+  var dx = e.clientX - sx, dy = e.clientY - sy; sx = null;
+  if (Math.abs(dy) > 40 && Math.abs(dy) > Math.abs(dx)) return;
+  nextCard(dx < -20 ? -1 : 1);
+});
+deck.addEventListener("pointercancel", function(){ sx = null; });
+$("again").addEventListener("click", buildDeck);
+buildDeck();
+
+/* ---------- rasca y gana ---------- */
+$("scratchImg").src = C.fotoRasca || C.fotoPortada || "";
+$("scratchMsg").textContent = C.textoRasca || "";
+var cv = $("scratchCanvas"), ctx = cv.getContext("2d", {willReadFrequently:true}), scratched = false, drawing = false, last = null, moves = 0, dpr = 1;
+function paintCover(){
+  var r = cv.getBoundingClientRect(); if (!r.width) return;
+  dpr = Math.min(window.devicePixelRatio || 1, 2);
+  cv.width = Math.round(r.width*dpr); cv.height = Math.round(r.height*dpr);
+  ctx.globalCompositeOperation = "source-over";
+  var g = ctx.createLinearGradient(0, 0, cv.width, cv.height);
+  g.addColorStop(0, "#f6c9d1"); g.addColorStop(.5, "#e88d9d"); g.addColorStop(1, "#c1121f");
+  ctx.fillStyle = g; ctx.fillRect(0, 0, cv.width, cv.height);
+  // corazoncitos decorativos
+  ctx.fillStyle = "rgba(255,255,255,.18)";
+  for (var i=0;i<26;i++){ heartPath(Math.random()*cv.width, Math.random()*cv.height, (8+Math.random()*18)*dpr); ctx.fill(); }
+  ctx.fillStyle = "#fff"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+  ctx.font = "500 " + (26*dpr) + "px 'Playfair Display', Georgia, serif";
+  ctx.fillText("Rasca aquí", cv.width/2, cv.height/2 - 14*dpr);
+  ctx.font = "500 " + (13*dpr) + "px 'DM Sans', system-ui, sans-serif";
+  ctx.fillText("hay algo escondido para ti ♡", cv.width/2, cv.height/2 + 22*dpr);
+}
+function heartPath(x, y, s){
+  ctx.beginPath();
+  ctx.moveTo(x, y + s*0.3);
+  ctx.bezierCurveTo(x, y, x - s*0.5, y, x - s*0.5, y + s*0.3);
+  ctx.bezierCurveTo(x - s*0.5, y + s*0.6, x, y + s*0.8, x, y + s);
+  ctx.bezierCurveTo(x, y + s*0.8, x + s*0.5, y + s*0.6, x + s*0.5, y + s*0.3);
+  ctx.bezierCurveTo(x + s*0.5, y, x, y, x, y + s*0.3);
+  ctx.closePath();
+}
+function pos(e){ var r = cv.getBoundingClientRect(); return {x:(e.clientX - r.left)*dpr, y:(e.clientY - r.top)*dpr}; }
+function scratchTo(pt){
+  ctx.globalCompositeOperation = "destination-out";
+  ctx.lineWidth = 46*dpr; ctx.lineCap = "round"; ctx.lineJoin = "round";
+  ctx.beginPath(); ctx.moveTo((last||pt).x, (last||pt).y); ctx.lineTo(pt.x, pt.y); ctx.stroke();
+  ctx.beginPath(); ctx.arc(pt.x, pt.y, 23*dpr, 0, Math.PI*2); ctx.fill();
+  last = pt;
+}
+function clearedRatio(){
+  var data = ctx.getImageData(0, 0, cv.width, cv.height).data, clear = 0, total = 0;
+  for (var i=3; i<data.length; i += 4*24){ total++; if (data[i] < 40) clear++; }
+  return clear/total;
+}
+function reveal(){
+  if (scratched) return; scratched = true;
+  cv.classList.add("cleared"); buzz([20,30,20]);
+  var r = cv.getBoundingClientRect(); burst(r.left + r.width/2, r.top + r.height/2, 34, 190);
+}
+cv.addEventListener("pointerdown", function(e){ if (scratched) return; drawing = true; last = null; try{ cv.setPointerCapture(e.pointerId); }catch(_){} scratchTo(pos(e)); });
+cv.addEventListener("pointermove", function(e){ if (!drawing) return; scratchTo(pos(e)); if (++moves % 8 === 0 && clearedRatio() > .5) reveal(); });
+["pointerup","pointercancel","pointerleave"].forEach(function(t){ cv.addEventListener(t, function(){ if (drawing && clearedRatio() > .5) reveal(); drawing = false; last = null; }); });
+var coverPainted = false;
+function initScratch(){ if (scratched) return; paintCover(); coverPainted = true; }
+(document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(initScratch);
+var rw = 0;
+window.addEventListener("resize", function(){ if (window.innerWidth !== rw && !scratched){ rw = window.innerWidth; paintCover(); } });
+rw = window.innerWidth;
+
+/* ---------- pregunta final ---------- */
+$("askQ").textContent = C.pregunta || "";
+var noBtn = $("no"), yesBtn = $("yes"), zone = $("askZone"), tries = 0;
+var noMsgs = ["¿Segura? 🥺", "Piénsalo bien…", "Ese botón no funciona 😌", "Respuesta incorrecta", "Inténtalo con el otro 💗", "No hay escapatoria", "Ya, dale que sí 🙈"];
+var lastDodge = 0;
+function dodge(e){
+  if (e) { e.preventDefault(); e.stopPropagation(); }
+  if (Date.now() - lastDodge < 350) return;
+  lastDodge = Date.now();
+  tries++;
+  var zr = zone.getBoundingClientRect(), nr = noBtn.getBoundingClientRect(), yr = yesBtn.getBoundingClientRect();
+  var maxX = zr.width - nr.width, maxY = zr.height - nr.height, x = 0, y = 0;
+  for (var k = 0; k < 20; k++){
+    x = Math.random()*maxX; y = Math.random()*maxY;
+    var ax = zr.left + x, ay = zr.top + y;
+    var overlapYes = ax < yr.right + 10 && ax + nr.width > yr.left - 10 && ay < yr.bottom + 10 && ay + nr.height > yr.top - 10;
+    var far = Math.abs(ax - nr.left) + Math.abs(ay - nr.top) > 80;
+    if (!overlapYes && far) break;
+  }
+  noBtn.style.right = "auto"; noBtn.style.transform = "none";
+  noBtn.style.left = x + "px"; noBtn.style.top = y + "px";
+  yesBtn.style.setProperty("--grow", Math.min(1 + tries*0.1, 1.7));
+  noBtn.textContent = tries > 5 ? "No 🫣" : "No";
+  $("askNote").textContent = noMsgs[(tries-1) % noMsgs.length];
+  buzz(8);
+}
+noBtn.addEventListener("pointerdown", dodge);
+noBtn.addEventListener("click", dodge);
+noBtn.addEventListener("mouseenter", function(){ dodge(); });
+yesBtn.addEventListener("click", function(){
+  buzz([40,60,40,60,120]);
+  var w = window.innerWidth, h = window.innerHeight;
+  burst(w/2, h/2, 60, Math.max(w, h)*0.55);
+  setTimeout(function(){ burst(w*0.25, h*0.35, 26, 160); }, 250);
+  setTimeout(function(){ burst(w*0.75, h*0.6, 26, 160); }, 500);
+  $("celImg").src = C.fotoFinal || C.fotoPortada || "";
+  $("celTitle").textContent = C.respuestaSi || "";
+  $("celText").textContent = C.mensajeFinal || "";
+  setTimeout(function(){ $("celebrate").classList.add("show"); }, 350);
+  $("askNote").textContent = "💗💗💗";
+});
+$("celClose").addEventListener("click", function(){ $("celebrate").classList.remove("show"); });
+
+observeReveals();
+updateCarousel();
+})();
+</script>
+</body>
+</html>
